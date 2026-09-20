@@ -5,16 +5,14 @@
     </header>
     <ul>
       <FriendContact
-        name="Manuel Lorenz"
-        phone="0123 45678 90"
-        email="manuel@localhost.com"
-        is-favorite="1"
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone="friend.phone"
+        :email="friend.email"
+        :is-favorite="friend.isFavorite"
       ></FriendContact>
-      <FriendContact
-        name="Julie Jones"
-        phone="0987 654421 21"
-        email="julie@localhost.com"
-      ></FriendContact>
+      <!-- v-bind="friend" -->
     </ul>
   </section>
 </template>
@@ -29,12 +27,13 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          isFavorite: true
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
-          email: "julie@localhost.com",
+          email: "julie@localhost.com"
         },
       ],
     };
