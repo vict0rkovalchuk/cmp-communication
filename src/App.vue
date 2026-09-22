@@ -3,6 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <NewFriend @add-contact="addContact"/>
     <ul>
       <FriendContact
         v-for="friend in friends"
@@ -40,6 +41,17 @@ export default {
     toggleFavoriteStatus(friendId) {
       const identifiedFriend = this.friends.find(friend => friend.id === friendId);
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
+    addContact(name, phone, email) {
+      const newFriendContact = {
+        id: crypto.randomUUID(),
+        name,
+        phone,
+        email,
+        isFavorite: false
+      }
+      
+      this.friends.unshift(newFriendContact);
     }
   }
 };
@@ -71,7 +83,8 @@ header {
   padding: 0;
   list-style: none;
 }
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
