@@ -7,14 +7,9 @@
       <FriendContact
         v-for="friend in friends"
         :key="friend.id"
-        :id="friend.id"
-        :name="friend.name"
-        :phone="friend.phone"
-        :email="friend.email"
-        :is-favorite="friend.isFavorite"
+        v-bind="friend"
         @toggle-favorite="toggleFavoriteStatus"
       ></FriendContact>
-      <!-- v-bind="friend" -->
     </ul>
   </section>
 </template>
