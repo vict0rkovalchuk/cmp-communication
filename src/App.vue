@@ -10,6 +10,7 @@
         :key="friend.id"
         v-bind="friend"
         @toggle-favorite="toggleFavoriteStatus"
+        @delete="deleteContact"
       ></FriendContact>
     </ul>
   </section>
@@ -50,8 +51,11 @@ export default {
         email,
         isFavorite: false
       }
-      
+
       this.friends.unshift(newFriendContact);
+    },
+    deleteContact(friendId) {
+      this.friends = this.friends.filter(friend => friend.id !== friendId);
     }
   }
 };
